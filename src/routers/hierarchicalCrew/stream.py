@@ -16,7 +16,6 @@ from fastapi.responses import StreamingResponse
 
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.callbacks import LangChainTracer
-import psycopg
 from src.deps import jwt_dependency
 
 limiter = Limiter(key_func=get_remote_address)

@@ -16,7 +16,10 @@
         "settings": {}
     }
   },
-  "forwardPorts": [],
+  "forwardPorts": [
+      5000
+    ],
+  "appPort": 5000,
   "workspaceMount": "source=${localWorkspaceFolder},target=/code,type=bind,consistency=delegated",
   "workspaceFolder": "/code",
   "runArgs": []

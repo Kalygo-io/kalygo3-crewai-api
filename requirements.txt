@@ -3,3 +3,5 @@ slowapi>=0.1.9,<0.2.0
 passlib>=1.7.4,<2.0
 python-jose>=3.3.0,<4.0
 debugpy>=1.8.0,<2.0.0
+toml>=0.10.2,<1.0
+psutil>=6.0.0,<7.0

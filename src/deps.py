@@ -5,7 +5,6 @@ from passlib.context import CryptContext
 from jose import jwt, JWTError
 from dotenv import load_dotenv
 import os
-from .db.database import SessionLocal
 from fastapi import Request
 
 load_dotenv()
@@ -13,14 +12,6 @@ load_dotenv()
 SECRET_KEY = os.getenv('AUTH_SECRET_KEY')
 ALGORITHM = os.getenv('AUTH_ALGORITHM')
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-db_dependency = Annotated[Session, Depends(get_db)]
 bcrypt_context = CryptContext(schemes=["sha256_crypt"])
 
 async def get_current_user(request: Request):
