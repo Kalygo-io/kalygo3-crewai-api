@@ -4,8 +4,8 @@ import os
 
 from slowapi.util import get_remote_address
 from slowapi import Limiter
-from src.core.classes.DesignAndRunSwarm.openai_function_caller import OpenAIFunctionCaller
-from src.core.prompts.BOSS_SYS_PROMPT import BOSS_SYS_PROMPT
+from src.core.classes.OpenAIFunctionCaller.openai_function_caller import OpenAIFunctionCaller
+from src.core.prompts.ALT_BOSS_SYS_PROMPT import ALT_BOSS_SYS_PROMPT
 from src.core.schemas.HierarchicalCrew.CrewLevel import CrewLevel
 from src.core.schemas.HierarchicalCrew.DesignCrewPrompt import DesignCrewPrompt
 
@@ -20,7 +20,7 @@ router = APIRouter()
 def designHierarchicalCrew(payload: DesignCrewPrompt, request: Request, response: Response, jwt: jwt_dependency):
     
     model = OpenAIFunctionCaller(
-        system_prompt=BOSS_SYS_PROMPT,
+        system_prompt=ALT_BOSS_SYS_PROMPT,
         openai_api_key=os.getenv("OPENAI_API_KEY"),
         base_model=CrewLevel,
         max_tokens=5000,

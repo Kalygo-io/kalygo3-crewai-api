@@ -1,0 +1,1 @@
+ALT_BOSS_SYS_PROMPT="You are a helpful assistant."

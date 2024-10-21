@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
@@ -22,10 +22,10 @@ load_dotenv()
 app = FastAPI(docs_url=None, redoc_url=None)
 
 origins = [
-    "http://localhost:3000",
-    "https://kalygo-nextjs-service-830723611668.us-east1.run.app"
-    "https://localhost:3000",
+    "http://127.0.0.1:3000"
 ]
+
+# origins = [ "*" ]
 
 app.add_middleware(
     CORSMiddleware,
@@ -50,3 +50,8 @@ app.include_router(
     prefix="/api/hierarchical-crew",
     tags=['hierarchical-crew'],
 )
+
+# Handle preflight requests explicitly
+@app.options("/")
+async def options_handler():
+    return {"status": "OK"}

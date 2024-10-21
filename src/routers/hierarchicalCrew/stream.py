@@ -102,4 +102,6 @@ Conduct a thorough research about AI and its impact on the world.
 @router.post("/stream")
 @limiter.limit("10/minute")
 def streamHierarchical(prompt: RunCrewPrompt, jwt: jwt_dependency, request: Request):
+    print("streamHierarchical")
+
     return StreamingResponse(generator(prompt.sessionId, prompt.content, prompt.crewConfig), media_type='text/event-stream')
