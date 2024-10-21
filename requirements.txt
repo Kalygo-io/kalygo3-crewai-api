@@ -1,0 +1,5 @@
+fastapi>=0.112.0,<1.0
+slowapi>=0.1.9,<0.2.0
+passlib>=1.7.4,<2.0
+python-jose>=3.3.0,<4.0
+debugpy>=1.8.0,<2.0.0
