@@ -8,7 +8,7 @@ from slowapi.middleware import SlowAPIMiddleware
 from slowapi.util import get_remote_address
 
 from .routers import (
-  hierarchicalCrew,
+  hierarchicalHaitianNewsCrew,
   healthcheck
 )
 
@@ -46,9 +46,9 @@ app.add_middleware(SlowAPIMiddleware)
 app.include_router(healthcheck.router, prefix="")
 
 app.include_router(
-    hierarchicalCrew.router,
-    prefix="/api/hierarchical-crew",
-    tags=['hierarchical-crew'],
+    hierarchicalHaitianNewsCrew.router,
+    prefix="/api/hierarchical-haitian-news-crew",
+    tags=['hierarchical-haitian-news-crew'],
 )
 
 # Handle preflight requests explicitly

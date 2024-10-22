@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Request
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from src.routers.hierarchicalCrew.helpers.format_news_for_email import format_news_for_email
-from src.routers.hierarchicalCrew.helpers.send_email import send_email_ses
+from src.routers.hierarchicalInsureTechNewsCrew.helpers.format_news_for_email import format_news_for_email
+from src.routers.hierarchicalInsureTechNewsCrew.helpers.send_email import send_email_ses
 from src.core.schemas.HierarchicalCrew.RunCrewPrompt import RunCrewPrompt
 from crewai import Agent, Crew, Task, Process
 import json
@@ -25,12 +25,6 @@ callbacks = []
 router = APIRouter()
 
 async def generator(sessionId: str, prompt: str, crewConfig: dict):
-
-    # model = ChatAnthropic(model="claude-3-5-sonnet-20240620", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
-
-    # print()
-    # print('crewConfig', crewConfig)
-    # print()
 
     def manager_step_callback(step):
         print('___ --- ___')
