@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: kalygo-436411 # Google Cloud project id
   GAR_LOCATION: us-central1 # Artifact Registry location
-  SERVICE_NAME: kalygo-crewai-service # Cloud Run service name
+  SERVICE_NAME: kalygo-crewai-api-service # Cloud Run service name
   SERVICE_REGION: us-east1 # Cloud Run service region
   ARTIFACTORY_URL: us-central1-docker.pkg.dev/kalygo-436411/kalygo-crewai-api/kalygo-crewai-api
 
@@ -38,8 +38,8 @@ jobs:
 
       # END - Docker auth and build
 
-      - name: Replace Cloud Run Service
-        run: gcloud run services replace service.yaml --region $SERVICE_REGION
+      # - name: Replace Cloud Run Service
+      #   run: gcloud run services replace service.yaml --region $SERVICE_REGION
 
       - name: Deploy to Cloud Run
         run: |
