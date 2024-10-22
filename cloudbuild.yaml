@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'ls -l'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'Dockerfile.prod', '-t', 'us-central1-docker.pkg.dev/kalygo-436411/kalygo-crewai-api/kalygo-crewai-api:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/kalygo-436411/kalygo-crewai-api/kalygo-crewai-api:latest']
+
