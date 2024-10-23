@@ -34,7 +34,7 @@ callbacks = []
 
 router = APIRouter()
 
-async def generator(sessionId: str):
+async def generator(sessionId: str, emails: str):
     
     def manager_callback(step):
         print('___ -!-!- ___')
@@ -112,6 +112,10 @@ async def generator(sessionId: str):
             )
         )
 
+    print()
+    print(len(workers))
+    print()
+
     research_task = Task(
         description=tasks_yaml["research_task"]["description"],
         expected_output=tasks_yaml["research_task"]["expected_output"],
@@ -138,7 +142,15 @@ async def generator(sessionId: str):
     print(crew_output.pydantic)
     print()
 
-    send_email_ses(["tad@cmdlabs.io"], format_news_for_email(crew_output.pydantic))
+    print("***")
+    print('emails', emails)
+    print("***")
+
+    email_list = emails.split(',')
+    for email in email_list:
+        send_email_ses([email.strip()], format_news_for_email(crew_output.pydantic))
+
+    # send_email_ses(["tad@cmdlabs.io"], format_news_for_email(crew_output.pydantic))
 
     yield json.dumps({
         "event": "crew_final_output",
@@ -155,4 +167,4 @@ async def generator(sessionId: str):
 @router.post("/stream")
 @limiter.limit("10/minute")
 def streamHierarchical(prompt: RunCrewPrompt, jwt: jwt_dependency, request: Request):
-    return StreamingResponse(generator(prompt.sessionId), media_type='text/event-stream')
+    return StreamingResponse(generator(prompt.sessionId, prompt.emails), media_type='text/event-stream')

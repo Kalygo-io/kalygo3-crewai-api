@@ -20,7 +20,7 @@ def format_news_for_email(news_results: NewsResults) -> str:
         email_body += "<hr>\n"
 
     # Add the solution-oriented question at the end
-    email_body += f"<h3>Solution-Oriented Question:</h3>\n"
-    email_body += f"<p>{news_results.solution_oriented_question}</p>\n"
+    # email_body += f"<h3>Solution-Oriented Question:</h3>\n"
+    # email_body += f"<p>{news_results.solution_oriented_question}</p>\n"
     
     return email_body

@@ -22,7 +22,8 @@ load_dotenv()
 app = FastAPI(docs_url=None, redoc_url=None)
 
 origins = [
-    "http://127.0.0.1:3000"
+    "http://127.0.0.1:3000",
+    "https://kalygo.io"
 ]
 
 # origins = [ "*" ]

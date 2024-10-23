@@ -11,4 +11,4 @@ class NewsResult(BaseModel):
 
 class NewsResults(BaseModel):
   results: list[NewsResult]
-  solution_oriented_question: str
+  # solution_oriented_question: str
